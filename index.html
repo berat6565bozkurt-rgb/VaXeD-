@@ -59,11 +59,59 @@ footer{padding:30px 0;color:var(--muted);text-align:center}
 <section class="section"><div class="section-title"><h2>🛒 Oyuncu Pazarı</h2><span class="pill">Sanal topluluk pazarı</span></div>
 <div class="card"><div class="form"><input id="marketSearch" placeholder="Oyuncu veya eşya ara..." oninput="renderListings()"></div><div class="list" id="listings" style="margin-top:12px"></div></div></section>
 
-<section class="section" id="trade"><div class="section-title"><h2>🔄 Takas Merkezi</h2></div>
+<section class="section" id="trade">
+<div class="section-title"><h2>🔄 Takas Alanı</h2><span class="pill">Oyuncu takasları</span></div>
 <div class="grid two">
-<div class="card"><h3>Zheckolic</h3><p>💎 64x Diamond</p><span class="muted">↔</span><h3>Caner</h3><p>🪙 250M Coin</p><button class="btn primary" onclick="toast('Takas demo kaydı oluşturuldu.')">Takas Teklifini Gör</button></div>
-<div class="card"><h3>Yeni Takas Oluştur</h3><div class="form"><input placeholder="Vereceğin eşya / miktar"><input placeholder="İstediğin eşya / miktar"><button class="btn primary" onclick="toast('Takas ilanı demo olarak oluşturuldu.')">Takas Oluştur</button></div></div>
-</div></section>
+<div class="card">
+<h3>📋 Aktif Takaslar</h3>
+<div class="list">
+<div class="row">
+<div>
+<b>64 net</b>
+<div class="muted">Zheckolic tarafından</div>
+</div>
+<div style="font-size:22px">↔</div>
+<div style="text-align:right">
+<b class="purple">250M</b>
+<div class="muted">Coin</div>
+</div>
+</div>
+<div class="row">
+<div>
+<b>32x Emerald</b>
+<div class="muted">Caner tarafından</div>
+</div>
+<div style="font-size:22px">↔</div>
+<div style="text-align:right">
+<b class="purple">125M</b>
+<div class="muted">Coin</div>
+</div>
+</div>
+<div class="row">
+<div>
+<b>10x Obsidian</b>
+<div class="muted">RogueX tarafından</div>
+</div>
+<div style="font-size:22px">↔</div>
+<div style="text-align:right">
+<b class="purple">50M</b>
+<div class="muted">Coin</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>➕ Takas Oluştur</h3>
+<div class="form">
+<input id="giveTrade" placeholder="Vereceğin eşya / miktar">
+<input id="wantTrade" placeholder="İstediğin eşya / miktar">
+<input id="tradeUser" placeholder="Oyuncu adın">
+<button class="btn primary" onclick="addTrade()">Takas İlanı Oluştur</button>
+</div>
+</div>
+</div>
+</section>
 
 <section class="section"><div class="section-title"><h2>🏆 Liderlik Tablosu</h2></div>
 <div class="card list" id="leaderboard"></div></section>
@@ -80,11 +128,30 @@ footer{padding:30px 0;color:var(--muted);text-align:center}
 <div class="grid two"><div class="card"><h3>Topluluk Çekilişi</h3><p>🎁 50M sanal coin</p><p class="muted">Katılım ücretsiz · Demo etkinlik</p><button class="btn primary" onclick="toast('Çekilişe demo olarak katıldın.')">Katıl</button></div>
 <div class="card"><h3>⚔️ Hafta Sonu Etkinliği</h3><p class="muted">Cumartesi 20:00 · Topluluk etkinliği</p><button class="btn secondary" onclick="toast('Etkinlik ayrıntıları açıldı.')">Detaylar</button></div></div></section>
 
-<section class="section" id="reports"><div class="section-title"><h2>🛡️ Dolandırıcı Bildirimleri</h2><span class="pill">İnceleme sistemi</span></div>
-<div class="card"><div class="notice">Bir rapor tek başına kesin suçlama anlamına gelmez. Durumlar: Bildirildi, İnceleniyor, Doğrulandı, Doğrulanmadı.</div><div class="list" style="margin-top:12px">
-<div class="row"><div class="left"><div class="avatar">R</div><div><b>Rapor #104</b><div class="muted">Oyuncu: RogueX · Kanıt: VAR</div></div></div><span class="pill">İnceleniyor</span></div>
-<div class="row"><div class="left"><div class="avatar">A</div><div><b>Rapor #103</b><div class="muted">Oyuncu: Anonim · Kanıt: YOK</div></div></div><span class="pill">Bildirildi</span></div>
-</div><button class="btn primary" style="margin-top:12px" onclick="openModal('reportModal')">Oyuncu Bildir</button></div></section>
+<section class="section" id="reports">
+<div class="section-title"><h2>🛡️ Rapor & Scammer Listesi</h2><span class="pill">Topluluk bildirimleri</span></div>
+<div class="grid two">
+<div class="card">
+<h3>📸 Oyuncu Bildir</h3>
+<div class="notice">Raporlar inceleme içindir. Kanıt fotoğrafı ekleyebilirsin.</div>
+<div class="form" style="margin-top:12px">
+<input id="reportPlayer" placeholder="Oyuncu adı">
+<input id="reportReason" placeholder="Bildirim nedeni">
+<input id="evidenceFile" type="file" accept="image/*" onchange="previewEvidence(event)">
+<div id="evidencePreview" class="muted">Kanıt fotoğrafı seçilmedi.</div>
+<button class="btn primary" onclick="submitReport()">Rapor Gönder</button>
+</div>
+</div>
+
+<div class="card">
+<div class="section-title"><h3 style="margin:0">🚨 Scammer Listesi</h3><span class="pill" id="scammerCount">0 kişi</span></div>
+<div id="scammerList" class="list">
+<div class="notice">Şu an scammer listesi boş.</div>
+</div>
+<button class="btn secondary" style="margin-top:12px" onclick="openModal('scammerModal')">➕ Scammer Ekle</button>
+</div>
+</div>
+</section>
 
 <section class="section" id="admin"><div class="section-title"><h2>🔐 Admin Paneli</h2><span class="pill">Demo / website-side</span></div>
 <div class="card"><p class="muted">Bu panel gerçek Minecraft sunucusuna bağlı değildir. Ban, mute, kick ve uyarılar yalnızca bu web sitesinde moderasyon kaydı oluşturur.</p>
@@ -99,19 +166,76 @@ IP: kolichub.net · <a href="https://discord.gg/koluchub" target="_blank">Discor
 <div class="mobile-nav"><a href="#home"><b>⌂</b>Ana Sayfa</a><a href="#market"><b>🛒</b>Pazar</a><a href="#trade"><b>↔</b>Takas</a><a href="#guides"><b>📚</b>Rehber</a><a href="#admin"><b>⚙</b>Admin</a></div>
 
 <div class="modal" id="reportModal"><div class="modalbox"><button class="close" onclick="closeModal('reportModal')">×</button><h2>Oyuncu Bildir</h2><div class="form"><input placeholder="Oyuncu adı"><input placeholder="Bildirim nedeni"><select><option>Kanıt yok</option><option>Kanıt var</option></select><button class="btn primary" onclick="toast('Rapor demo olarak kaydedildi.');closeModal('reportModal')">Rapor Gönder</button></div></div></div>
+
+<div class="modal" id="scammerModal"><div class="modalbox">
+<button class="close" onclick="closeModal('scammerModal')">×</button>
+<h2>🚨 Scammer Ekle</h2>
+<p class="muted">Bu demo listeye bir kayıt ekler.</p>
+<div class="form">
+<input id="scammerName" placeholder="Oyuncu adı">
+<input id="scammerReason" placeholder="Neden bildirildi?">
+<button class="btn primary" onclick="addScammer()">Listeye Ekle</button>
+</div>
+</div></div>
 <div class="modal" id="adminModal"><div class="modalbox"><button class="close" onclick="closeModal('adminModal')">×</button><h2>Admin Girişi</h2><p class="muted">Statik demo: gerçek kimlik doğrulama içermez.</p><div class="form"><input placeholder="Yetkili kullanıcı adı"><input type="password" placeholder="Demo erişim kodu"><button class="btn primary" onclick="toast('Demo admin paneli açıldı.');closeModal('adminModal')">Giriş</button></div></div></div>
 
 <script>
 const market=[['💎','Diamond','2.5M'],['🪙','Gold Block','850K'],['🌿','Kelp Stack','82K'],['🧱','Obsidian','450K']];
 const listings=[['Zheckolic','64x Diamond','2.5M'],['Caner','250M Coin','250M'],['RogueX','32x Emerald','1.2M'],['Dryosun','10x Obsidian','450K']];
 const leaders=[['Zheckolic','250M'],['Caner','134M'],['dryosun','81M'],['an0x713','15M'],['_draken_0510','3M']];
+
+function previewEvidence(event){
+  const file=event.target.files[0];
+  const box=document.getElementById('evidencePreview');
+  if(!file){box.textContent='Kanıt fotoğrafı seçilmedi.';return}
+  const url=URL.createObjectURL(file);
+  box.innerHTML=`<img src="${url}" alt="Kanıt önizleme" style="max-width:100%;max-height:220px;border-radius:12px;margin-top:8px;border:1px solid #3a2c50">`;
+}
+function submitReport(){
+  const player=document.getElementById('reportPlayer').value.trim();
+  const reason=document.getElementById('reportReason').value.trim();
+  if(!player || !reason){toast('Oyuncu adı ve neden gerekli.');return}
+  toast('Rapor demo olarak kaydedildi.');
+}
+function addTrade(){
+  const give=document.getElementById('giveTrade').value.trim();
+  const want=document.getElementById('wantTrade').value.trim();
+  const user=document.getElementById('tradeUser').value.trim() || 'Anonim';
+  if(!give || !want){toast('Vereceğin ve istediğin şeyi yaz.');return}
+  toast(`${user} için takas ilanı oluşturuldu.`);
+  document.getElementById('giveTrade').value='';
+  document.getElementById('wantTrade').value='';
+}
+const scammers=[];
+function renderScammers(){
+  const list=document.getElementById('scammerList');
+  const count=document.getElementById('scammerCount');
+  count.textContent=`${scammers.length} kişi`;
+  if(!scammers.length){
+    list.innerHTML='<div class="notice">Şu an scammer listesi boş.</div>';
+    return;
+  }
+  list.innerHTML=scammers.map((x,i)=>`<div class="row"><div><b>${x.name}</b><div class="muted">${x.reason}</div></div><span class="pill">İnceleniyor</span></div>`).join('');
+}
+function addScammer(){
+  const name=document.getElementById('scammerName').value.trim();
+  const reason=document.getElementById('scammerReason').value.trim();
+  if(!name || !reason){toast('Oyuncu adı ve neden gerekli.');return}
+  scammers.push({name,reason});
+  renderScammers();
+  closeModal('scammerModal');
+  document.getElementById('scammerName').value='';
+  document.getElementById('scammerReason').value='';
+  toast('Scammer kaydı demo olarak eklendi.');
+}
+
 function renderMarket(){document.getElementById('marketCards').innerHTML=market.map(x=>`<div class="card"><div class="big">${x[0]}</div><h3>${x[1]}</h3><div class="muted">Sanal fiyat</div><div class="big purple">${x[2]}</div><button class="btn secondary" onclick="toast('Pazar ürünü seçildi.')">İncele</button></div>`).join('')}
 function renderListings(){let q=(document.getElementById('marketSearch').value||'').toLowerCase();document.getElementById('listings').innerHTML=listings.filter(x=>x.join(' ').toLowerCase().includes(q)).map(x=>`<div class="row"><div class="left"><div class="avatar">${x[0][0]}</div><div><b>${x[0]}</b><div class="muted">${x[1]}</div></div></div><strong class="purple">${x[2]}</strong></div>`).join('')||'<div class="muted">Sonuç bulunamadı.</div>'}
 function renderLeaders(){document.getElementById('leaderboard').innerHTML=leaders.map((x,i)=>`<div class="row"><div class="left"><div class="avatar">${i+1}</div><b>${x[0]}</b></div><strong class="purple">${x[1]}</strong></div>`).join('')}
 function copyIP(){navigator.clipboard?.writeText('kolichub.net');toast('IP kopyalandı: kolichub.net')}
 function toast(t){let e=document.createElement('div');e.textContent=t;e.style='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#18131f;border:1px solid #6d42b5;color:white;padding:12px 16px;border-radius:12px;z-index:99;box-shadow:0 10px 30px #0008';document.body.appendChild(e);setTimeout(()=>e.remove(),2200)}
 function openModal(id){document.getElementById(id).classList.add('show')}function closeModal(id){document.getElementById(id).classList.remove('show')}
-renderMarket();renderListings();renderLeaders();
+renderMarket();renderListings();renderLeaders();renderScammers();
 </script>
 </body>
 </html>
