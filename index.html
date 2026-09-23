@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KolicHub • Minecraft Community</title>
+<meta name="description" content="KolicHub Minecraft topluluk portalı">
+<style>
+:root{--bg:#07070b;--panel:#101016;--panel2:#15151e;--purple:#8b5cf6;--purple2:#a855f7;--text:#f7f7fb;--muted:#a7a7b5;--border:#272335;--ok:#48e38b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% -10%,#2a1254 0,#07070b 38%);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}button,input,select{font:inherit}a{text-decoration:none;color:inherit}
+.header{position:sticky;top:0;z-index:20;background:#08080ce8;backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav{max-width:1200px;margin:auto;padding:14px 18px;display:flex;align-items:center;gap:14px}.logo{font-size:22px;font-weight:900}.logo span{color:var(--purple)}
+.navlinks{display:none;gap:8px;margin-left:auto}.navlinks a,.mobile-nav a{padding:10px 12px;border-radius:12px;color:var(--muted)}.navlinks a:hover,.mobile-nav a:hover{background:#191322;color:white}
+.container{max-width:1200px;margin:auto;padding:22px 16px 90px}.hero{padding:42px 0 24px}.badge{display:inline-block;background:#201432;border:1px solid #5d35a5;color:#cbb4ff;padding:7px 11px;border-radius:999px;font-size:13px}.hero h1{font-size:clamp(34px,7vw,64px);line-height:1;margin:16px 0 12px}.hero h1 span{color:var(--purple)}.hero p{color:var(--muted);max-width:720px;font-size:17px}
+.grid{display:grid;gap:14px}.cards{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:linear-gradient(180deg,#12121a,#0e0e14);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 12px 35px #0006}.card h3{margin:0 0 8px}.muted{color:var(--muted)}.big{font-size:28px;font-weight:900}.purple{color:#bd9cff}
+.btn{border:0;border-radius:12px;padding:11px 15px;cursor:pointer;font-weight:800}.primary{background:linear-gradient(135deg,var(--purple),var(--purple2));color:white;box-shadow:0 8px 22px #8b5cf633}.secondary{background:#1a1722;color:white;border:1px solid var(--border)}.danger{background:#35151d;color:#ffb3c1;border:1px solid #6e2838}.actions{display:flex;gap:9px;flex-wrap:wrap}
+.section{margin-top:30px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:10px;margin-bottom:12px}.section-title h2{margin:0}.pill{font-size:12px;padding:5px 8px;border-radius:999px;background:#1c1627;color:#cbb4ff}
+.list{display:grid;gap:10px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#111119;border:1px solid var(--border);padding:13px;border-radius:14px}.avatar{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#6d28d9,#a855f7);display:grid;place-items:center;font-weight:900}.left{display:flex;align-items:center;gap:10px}
+input,select{width:100%;background:#0b0b10;color:white;border:1px solid var(--border);border-radius:12px;padding:12px;outline:none}input:focus,select:focus{border-color:var(--purple)}.form{display:grid;gap:10px}
+.notice{border-left:3px solid var(--purple);background:#15101f;padding:13px;border-radius:10px;color:#d8cff0}
+.mobile-nav{position:fixed;bottom:0;left:0;right:0;z-index:30;display:flex;justify-content:space-around;background:#0b0b0eee;backdrop-filter:blur(14px);border-top:1px solid var(--border);padding:7px 5px}.mobile-nav a{font-size:11px;text-align:center;padding:8px 5px}.mobile-nav b{display:block;font-size:17px}
+.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:16px;z-index:50}.modal.show{display:flex}.modalbox{width:min(520px,100%);background:#101016;border:1px solid #3a2c50;border-radius:20px;padding:20px}.close{float:right;background:none;border:0;color:white;font-size:24px}
+footer{padding:30px 0;color:var(--muted);text-align:center}
+@media(min-width:800px){.navlinks{display:flex}.mobile-nav{display:none}.container{padding-bottom:40px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="nav">
+<div class="logo">Kolic<span>Hub</span></div>
+<nav class="navlinks">
+<a href="#home">Ana Sayfa</a><a href="#market">Pazar</a><a href="#trade">Takas</a><a href="#guides">Rehberler</a><a href="#reports">Raporlar</a><a href="#admin">Admin</a>
+</nav>
+<a class="btn primary" href="https://discord.gg/koluchub" target="_blank">Discord</a>
+</div></header>
+
+<main class="container" id="home">
+<section class="hero">
+<span class="badge">🎮 Minecraft Topluluk Portalı</span>
+<h1>Kolic<span>Hub</span></h1>
+<p>KolicHub için bağımsız topluluk merkezi. Pazar, takas, rehberler, sanal ekonomi, etkinlikler ve moderasyon araçları tek yerde.</p>
+<div class="actions">
+<button class="btn primary" onclick="copyIP()">🌐 IP: kolichub.net · Kopyala</button>
+<a class="btn secondary" href="https://discord.gg/koluchub" target="_blank">💬 KolicHub Discord</a>
+<a class="btn secondary" href="https://discord.gg/VaXeD" target="_blank">💜 VaXeD Discord</a>
+</div>
+</section>
+
+<section class="grid cards">
+<div class="card"><div class="muted">Oyuncular</div><div class="big">1,248</div></div>
+<div class="card"><div class="muted">Aktif İlan</div><div class="big">86</div></div>
+<div class="card"><div class="muted">Toplam Takas</div><div class="big">4,921</div></div>
+<div class="card"><div class="muted">Etkinlik</div><div class="big purple">3</div></div>
+</section>
+
+<section class="section" id="market"><div class="section-title"><h2>🌙 Gece Pazarı</h2><span class="pill">Demo veri</span></div>
+<div class="grid cards" id="marketCards"></div></section>
+
+<section class="section"><div class="section-title"><h2>🛒 Oyuncu Pazarı</h2><span class="pill">Sanal topluluk pazarı</span></div>
+<div class="card"><div class="form"><input id="marketSearch" placeholder="Oyuncu veya eşya ara..." oninput="renderListings()"></div><div class="list" id="listings" style="margin-top:12px"></div></div></section>
+
+<section class="section" id="trade"><div class="section-title"><h2>🔄 Takas Merkezi</h2></div>
+<div class="grid two">
+<div class="card"><h3>Zheckolic</h3><p>💎 64x Diamond</p><span class="muted">↔</span><h3>Caner</h3><p>🪙 250M Coin</p><button class="btn primary" onclick="toast('Takas demo kaydı oluşturuldu.')">Takas Teklifini Gör</button></div>
+<div class="card"><h3>Yeni Takas Oluştur</h3><div class="form"><input placeholder="Vereceğin eşya / miktar"><input placeholder="İstediğin eşya / miktar"><button class="btn primary" onclick="toast('Takas ilanı demo olarak oluşturuldu.')">Takas Oluştur</button></div></div>
+</div></section>
+
+<section class="section"><div class="section-title"><h2>🏆 Liderlik Tablosu</h2></div>
+<div class="card list" id="leaderboard"></div></section>
+
+<section class="section" id="guides"><div class="section-title"><h2>📚 Rehberler</h2></div>
+<div class="grid cards">
+<div class="card"><h3>🌾 Farm Rehberleri</h3><p class="muted">Kaynak ve üretim rehberleri.</p></div>
+<div class="card"><h3>💰 Ekonomi</h3><p class="muted">Sanal ekonomi ve pazar ipuçları.</p></div>
+<div class="card"><h3>🧭 Başlangıç</h3><p class="muted">Yeni oyuncular için temel bilgiler.</p></div>
+<div class="card"><h3>⌨️ Komutlar</h3><p class="muted">Aranabilir komut veritabanı.</p></div>
+</div></section>
+
+<section class="section"><div class="section-title"><h2>🎁 Çekilişler & Etkinlikler</h2></div>
+<div class="grid two"><div class="card"><h3>Topluluk Çekilişi</h3><p>🎁 50M sanal coin</p><p class="muted">Katılım ücretsiz · Demo etkinlik</p><button class="btn primary" onclick="toast('Çekilişe demo olarak katıldın.')">Katıl</button></div>
+<div class="card"><h3>⚔️ Hafta Sonu Etkinliği</h3><p class="muted">Cumartesi 20:00 · Topluluk etkinliği</p><button class="btn secondary" onclick="toast('Etkinlik ayrıntıları açıldı.')">Detaylar</button></div></div></section>
+
+<section class="section" id="reports"><div class="section-title"><h2>🛡️ Dolandırıcı Bildirimleri</h2><span class="pill">İnceleme sistemi</span></div>
+<div class="card"><div class="notice">Bir rapor tek başına kesin suçlama anlamına gelmez. Durumlar: Bildirildi, İnceleniyor, Doğrulandı, Doğrulanmadı.</div><div class="list" style="margin-top:12px">
+<div class="row"><div class="left"><div class="avatar">R</div><div><b>Rapor #104</b><div class="muted">Oyuncu: RogueX · Kanıt: VAR</div></div></div><span class="pill">İnceleniyor</span></div>
+<div class="row"><div class="left"><div class="avatar">A</div><div><b>Rapor #103</b><div class="muted">Oyuncu: Anonim · Kanıt: YOK</div></div></div><span class="pill">Bildirildi</span></div>
+</div><button class="btn primary" style="margin-top:12px" onclick="openModal('reportModal')">Oyuncu Bildir</button></div></section>
+
+<section class="section" id="admin"><div class="section-title"><h2>🔐 Admin Paneli</h2><span class="pill">Demo / website-side</span></div>
+<div class="card"><p class="muted">Bu panel gerçek Minecraft sunucusuna bağlı değildir. Ban, mute, kick ve uyarılar yalnızca bu web sitesinde moderasyon kaydı oluşturur.</p>
+<div class="actions"><button class="btn primary" onclick="openModal('adminModal')">Admin Girişi</button></div></div></section>
+
+<footer>
+KolicHub • Bağımsız topluluk portalı<br>
+IP: kolichub.net · <a href="https://discord.gg/koluchub" target="_blank">Discord</a> · <a href="https://discord.gg/VaXeD" target="_blank">VaXeD</a>
+</footer>
+</main>
+
+<div class="mobile-nav"><a href="#home"><b>⌂</b>Ana Sayfa</a><a href="#market"><b>🛒</b>Pazar</a><a href="#trade"><b>↔</b>Takas</a><a href="#guides"><b>📚</b>Rehber</a><a href="#admin"><b>⚙</b>Admin</a></div>
+
+<div class="modal" id="reportModal"><div class="modalbox"><button class="close" onclick="closeModal('reportModal')">×</button><h2>Oyuncu Bildir</h2><div class="form"><input placeholder="Oyuncu adı"><input placeholder="Bildirim nedeni"><select><option>Kanıt yok</option><option>Kanıt var</option></select><button class="btn primary" onclick="toast('Rapor demo olarak kaydedildi.');closeModal('reportModal')">Rapor Gönder</button></div></div></div>
+<div class="modal" id="adminModal"><div class="modalbox"><button class="close" onclick="closeModal('adminModal')">×</button><h2>Admin Girişi</h2><p class="muted">Statik demo: gerçek kimlik doğrulama içermez.</p><div class="form"><input placeholder="Yetkili kullanıcı adı"><input type="password" placeholder="Demo erişim kodu"><button class="btn primary" onclick="toast('Demo admin paneli açıldı.');closeModal('adminModal')">Giriş</button></div></div></div>
+
+<script>
+const market=[['💎','Diamond','2.5M'],['🪙','Gold Block','850K'],['🌿','Kelp Stack','82K'],['🧱','Obsidian','450K']];
+const listings=[['Zheckolic','64x Diamond','2.5M'],['Caner','250M Coin','250M'],['RogueX','32x Emerald','1.2M'],['Dryosun','10x Obsidian','450K']];
+const leaders=[['Zheckolic','250M'],['Caner','134M'],['dryosun','81M'],['an0x713','15M'],['_draken_0510','3M']];
+function renderMarket(){document.getElementById('marketCards').innerHTML=market.map(x=>`<div class="card"><div class="big">${x[0]}</div><h3>${x[1]}</h3><div class="muted">Sanal fiyat</div><div class="big purple">${x[2]}</div><button class="btn secondary" onclick="toast('Pazar ürünü seçildi.')">İncele</button></div>`).join('')}
+function renderListings(){let q=(document.getElementById('marketSearch').value||'').toLowerCase();document.getElementById('listings').innerHTML=listings.filter(x=>x.join(' ').toLowerCase().includes(q)).map(x=>`<div class="row"><div class="left"><div class="avatar">${x[0][0]}</div><div><b>${x[0]}</b><div class="muted">${x[1]}</div></div></div><strong class="purple">${x[2]}</strong></div>`).join('')||'<div class="muted">Sonuç bulunamadı.</div>'}
+function renderLeaders(){document.getElementById('leaderboard').innerHTML=leaders.map((x,i)=>`<div class="row"><div class="left"><div class="avatar">${i+1}</div><b>${x[0]}</b></div><strong class="purple">${x[1]}</strong></div>`).join('')}
+function copyIP(){navigator.clipboard?.writeText('kolichub.net');toast('IP kopyalandı: kolichub.net')}
+function toast(t){let e=document.createElement('div');e.textContent=t;e.style='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#18131f;border:1px solid #6d42b5;color:white;padding:12px 16px;border-radius:12px;z-index:99;box-shadow:0 10px 30px #0008';document.body.appendChild(e);setTimeout(()=>e.remove(),2200)}
+function openModal(id){document.getElementById(id).classList.add('show')}function closeModal(id){document.getElementById(id).classList.remove('show')}
+renderMarket();renderListings();renderLeaders();
+</script>
+</body>
+</html>
